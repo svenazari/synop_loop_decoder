@@ -4,4 +4,4 @@ Decoding multiple synop reports stored in one file.<br>
 MadeBy: SvenAzari<br>
 Requirements: Python3<br>
 <br>
-Please read commented instruction in script to properly set this script.
+Please read comments of lines to properly set this script.
