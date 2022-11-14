@@ -408,7 +408,9 @@ while c < length:
                 Csred = group[3:4]
                 Cvis = group[4:5]
                 Nnispos = int(round(int(Nnis) * 10 / 8,0) * 10)
-                if Cnis == "0" and Csred != "0":
+                if Nnis == "9":
+                    Nnisprint = "Nisku naoblaku nije moguće odrediti jer se oblaci ne vide."
+                elif Cnis == "0" and Csred != "0":
                     Nnisprint = "Srednja naoblaka: " + str(Nnispos) + "%"
                 elif Cnis == "0" and Csred == "0":
                     Nnisprint = "Nisu prisutni niski ni srednji oblaci."
@@ -457,7 +459,9 @@ while c < length:
                 Csred = group[3:4]
                 Cvis = group[4:5]
                 Nnispos = int(round(int(Nnis) * 10 / 8,0) * 10)
-                if Cnis == "0" and Csred != "0":
+                if Nnis == "9":
+                    Nnisprint = "Nisku naoblaku nije moguće odrediti jer se oblaci ne vide."
+                elif Cnis == "0" and Csred != "0":
                     Nnisprint = "Srednja naoblaka: " + str(Nnispos) + "%"
                 elif Cnis == "0" and Csred == "0":
                     Nnisprint = "Nisu prisutni niski ni srednji oblaci."
@@ -491,7 +495,9 @@ while c < length:
                 Csred = group[3:4]
                 Cvis = group[4:5]
                 Nnispos = int(round(int(Nnis) * 10 / 8,0) * 10)
-                if Cnis == "0" and Csred != "0":
+                if Nnis == "9":
+                    Nnisprint = "Nisku naoblaku nije moguće odrediti jer se oblaci ne vide."
+                elif Cnis == "0" and Csred != "0":
                     Nnisprint = "Srednja naoblaka: " + str(Nnispos) + "%"
                 elif Cnis == "0" and Csred == "0":
                     Nnisprint = "Nisu prisutni niski ni srednji oblaci."
@@ -518,9 +524,11 @@ while c < length:
                 gg = group[3:5]
                 decoded.append("Izvještaj predan u: " + GG + ":" + gg + " UTC.")
         elif d == 13:
-            GG = group[1:3]
-            gg = group[3:5]
-            decoded.append("Izvještaj predan u: " + GG + ":" + gg + " UTC.")
+            x = group[0:1]
+            if x =="9":
+                GG = group[1:3]
+                gg = group[3:5]
+                decoded.append("Izvještaj predan u: " + GG + ":" + gg + " UTC.")
 
         d += 1
         continue
@@ -592,7 +600,7 @@ while c < length:
             elif a == "7": #precipitation during last 24 hours
                 RRRR = group333[1:5]
                 if RRRR == "0000":
-                    rainprint = "0 mm (nema oborine)"
+                    rainprint = "0 mm (nije bilo oborine)"
                 elif RRRR == "9999":
                     rainprint = "0 mm (oborina u tragovima)"
                 else:
@@ -651,7 +659,8 @@ while c < length:
                 elif xx == "24":
                     pass
                 elif xx == "31": #new snow
-                    pass
+                    snownew = int(group333[3:5])
+                    decoded333.append("Visina novog snijega: " + str(snownew) + " cm.")
                 elif xx == "50": #clouds on mountian
                     pass
                 elif xx == "51": #clouds and fog below station level
