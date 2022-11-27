@@ -543,7 +543,7 @@ while c < length:
                 txs = group333[1:2]
                 txtx = group333[2:5] 
                 if txtx == "///":
-                    pass
+                    decided333.append("Maksimalna dnevna temperatura zraka nije poznata.")
                 else: 
                     if txs == "1":
                         TX = float(txtx) / -10
@@ -554,7 +554,7 @@ while c < length:
                 tns = group333[1:2]
                 tntn = group333[2:5]
                 if tntn == "///":
-                    pass
+                    decided333.append("Minimalna jutarnja temperatura zraka nije poznata.")
                 else: 
                     if tns == "1":
                         TN = float(tntn) / -10
