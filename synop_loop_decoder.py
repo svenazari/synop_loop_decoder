@@ -387,7 +387,7 @@ while c < length:
                     Rtp = 12
                 Rprint = "Količna oborine u prethodnih " + str(Rtp) + " sati: " + str(rrrp)
                 decoded.append(Rprint)
-            elif x == "7":
+            elif x == "7": #weather phenomenas
                 ww = int(group[1:3])
                 WW1 = group[3:4]
                 WW2 = group[4:5]
@@ -536,26 +536,31 @@ while c < length:
     len333 = len(synop333) #check length of synop333
     
     if len333 > 0: #if there are elements in synop333 start decodind third section of synop report
-#        e = 0
         for e in range (0, len333):
             group333 = synop333[e]
             a = group333[0:1] #group indicator
             if a == "1": #max air temperature during day
                 txs = group333[1:2]
                 txtx = group333[2:5] 
-                if txs == "1":
-                    TX = float(txtx) / -10
-                else:
-                    TX = float(txtx) / 10
-                decoded333.append("Maksimalna dnevna temperatura zraka: " + str(TX) + "°C")
+                if txtx == "///":
+                    pass
+                else: 
+                    if txs == "1":
+                        TX = float(txtx) / -10
+                    else:
+                        TX = float(txtx) / 10
+                    decoded333.append("Maksimalna dnevna temperatura zraka: " + str(TX) + "°C")
             elif a == "2": #min air temperature during night
                 tns = group333[1:2]
-                tntn = group333[2:5] 
-                if tns == "1":
-                    TN = float(tntn) / -10
-                else:
-                    TN = float(tntn) / 10
-                decoded333.append("Minimalna jutarnja temperatura zraka: " + str(TN) + "°C")
+                tntn = group333[2:5]
+                if tntn == "///":
+                    pass
+                else: 
+                    if tns == "1":
+                        TN = float(tntn) / -10
+                    else:
+                        TN = float(tntn) / 10
+                    decoded333.append("Minimalna jutarnja temperatura zraka: " + str(TN) + "°C")
             elif a == "3":
                 E = group333[1:2]
                 t5s = group333[2:3]
@@ -581,7 +586,7 @@ while c < length:
                     Esprint = "nije poznato"
                 else:
                     Esint = int(Es)
-                    Esprint = Ens[Esint]
+                    Esprint = Ews[Esint]
                 decoded333.append("Stanje tla sa snijegom i ledom: " + Esprint)
                 if snow == "999": #hight of snow cover
                     decoded333.append("Visinu snježnog pokrivača nije moguće izmeriti.")
@@ -672,7 +677,6 @@ while c < length:
                 elif xx == "66":
                     pass
             
-#            e += 1
             continue
     
     decl = len(decoded) #length of decoded
