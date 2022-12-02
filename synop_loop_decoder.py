@@ -588,7 +588,9 @@ while c < length:
                     Esint = int(Es)
                     Esprint = Ews[Esint]
                 decoded333.append("Stanje tla sa snijegom i ledom: " + Esprint)
-                if snow == "999": #hight of snow cover
+                if snow == "///":
+                   decoded333.append("Visina snježnog pokrivača nije poznata.")
+                elif snow == "999": #hight of snow cover
                     decoded333.append("Visinu snježnog pokrivača nije moguće izmeriti.")
                 elif snow == "998":
                     decoded333.append("Snježni pokrivač je u krpama.")
