@@ -1,4 +1,4 @@
-#Synop loop decoder
+#Synop Loop Decoder
 #MadeBy: SvenAzari
 #Requirements: Python3
 
@@ -32,11 +32,8 @@ yearutc = dt.year #utc year
 monthutc = dt.month #utc month
 dayutc = dt.day #utc day
 hourutc = dt.hour #utc hour
-time = str(dayutc) + "." + str(monthutc) + "." + str(yearutc) + "., " + str(hourutc) + " UTC"
-if int(hourutc) < 10:
-    hourutcp = str(hourutc).zfill(1)
-else:
-    hourutcp = str(hourutc)
+hourutcp = str(hourutc).zfill(2)
+time = str(dayutc) + "." + str(monthutc) + "." + str(yearutc) + "., " + str(hourutcp) + " UTC"
 
 #read from file and save in list bystations
 with open ("/home/azari/scripts/latest_synop.txt") as synop: #location of input file
@@ -46,6 +43,18 @@ with open ("/home/azari/scripts/latest_synop.txt") as synop: #location of input 
 length = len(bystations)
 
 report = open("/home/azari/scripts/report.txt", "w+") #creating and opening file to write decoded reports into - location of output file needs to be set according to users needs
+#izjave o odricanju od odgovornosti
+report.write("Neobrađeni podaci u obliku synop izvještaja su preuzeti sa WEB stranice www.ogimet.com.")
+report.write("\n")
+report.write("Synop izvještaji su obrađeni skritom Synop Loop Decoder.") 
+report.write("\n")
+report.write("Autor skripte ne odgovara za greške nastale zbog nedostatka podataka ili azbog netočnog unosa poslanih podata sa meteoroloških postaja.")
+report.write("\n")
+report.write("Skripta i podaci dobiveni korištenjem skrite nisu namjenjeni za službenu upotrebu te autor skripte ne odgovara za štetu nastalu prilikom pokušaja korištenja skripte i/ili obrađenih podataka na takav način.")
+report.write("\n")
+report.write("###")
+report.write("\n")
+#početak txt datoteke
 report.write("Synop izvještaj za: " + time)
 report.write("\n")
 
@@ -134,6 +143,8 @@ while c < length:
                 postajaprint = "Ogulin"
             elif postaja == "330":
                 postajaprint = "Gospić"
+            elif postaja == "365":
+                postajaprint = "Gorice"
             elif postaja == "370":
                 postajaprint = "Slavonski Brod"
             elif postaja == "382":
@@ -394,6 +405,8 @@ while c < length:
                 wwp = wwlis[0+ww]
                 if WW1 == "/" and WW2 == "/":
                     WWp = "nije poznato"
+                elif WW1 == "/" and WW2 != "/":
+                    WWp = wlis[0+int(WW2)]
                 elif WW1 != "/" and WW2 == "/":
                     WWp = wlis[0+int(WW1)]
                 elif WW1 == WW2:
@@ -445,6 +458,8 @@ while c < length:
                 wwp = wwlis[0+ww]
                 if WW1 == "/" and WW2 == "/":
                     WWp = "nije poznato"
+                elif WW1 == "/" and WW2 != "/":
+                    WWp = wlis[0+int(WW2)]
                 elif WW1 != "/" and WW2 == "/":
                     WWp = wlis[0+int(WW1)]
                 elif WW1 == WW2:
