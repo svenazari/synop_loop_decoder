@@ -52,7 +52,9 @@ report.write("Autor skripte ne odgovara za greške nastale zbog nedostatka podat
 report.write("\n")
 report.write("Skripta i podaci dobiveni korištenjem skrite nisu namjenjeni za službenu upotrebu te autor skripte ne odgovara za štetu nastalu prilikom pokušaja korištenja skripte i/ili obrađenih podataka na takav način.")
 report.write("\n")
+report.write("\n")
 report.write("###")
+report.write("\n")
 report.write("\n")
 #početak txt datoteke
 report.write("Synop izvještaj za: " + time)
