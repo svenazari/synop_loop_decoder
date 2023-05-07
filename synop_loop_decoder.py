@@ -46,9 +46,9 @@ report = open("/home/azari/scripts/report.txt", "w+") #creating and opening file
 #izjave o odricanju od odgovornosti
 report.write("Neobrađeni podaci u obliku synop izvještaja su preuzeti sa WEB stranice www.ogimet.com.")
 report.write("\n")
-report.write("Synop izvještaji su obrađeni skritom Synop Loop Decoder.") 
+report.write("Synop izvještaji su obrađeni skriptom Synop Loop Decoder.") 
 report.write("\n")
-report.write("Autor skripte ne odgovara za greške nastale zbog nedostatka podataka ili azbog netočnog unosa poslanih podata sa meteoroloških postaja.")
+report.write("Autor skripte ne odgovara za greške nastale zbog nedostatka podataka ili zbog netočnog unosa poslanih podata sa meteoroloških postaja.")
 report.write("\n")
 report.write("Skripta i podaci dobiveni korištenjem skrite nisu namjenjeni za službenu upotrebu te autor skripte ne odgovara za štetu nastalu prilikom pokušaja korištenja skripte i/ili obrađenih podataka na takav način.")
 report.write("\n")
