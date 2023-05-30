@@ -5,6 +5,7 @@
 #Please read commented instruction in lines to properly set this script.
 
 #imports
+import sys
 import math
 import datetime
 from datetime import timezone
@@ -792,4 +793,6 @@ while c < length:
     
     c += 1
     continue
+
+sys.exit (0)
 
