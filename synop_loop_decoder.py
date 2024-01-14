@@ -227,7 +227,9 @@ while c < length:
                 fff = int(ff)
             vjind = decoded[1] #wind speed indicator (saved in decoded)
             if N == "9":
-                Nprint = "Ukupnu naoblaku nije moguće odrediti jer se oblaci ne vide"
+                Nprint = "Ukupnu naoblaku nije moguće odrediti jer se oblaci ne vide."
+            elif N == "/":
+                Nprint = "Nije poznat podatak o ukupnoj naoblaci."
             else:
                 N10 = int(round(int(N) * 10 / 8,0) * 10) #converting total cloud cover from x/8 to x/10
                 Nprint = "Ukupna naoblaka: " + str(N10) + "%"
@@ -287,7 +289,7 @@ while c < length:
         elif d == 6:
             snd = group[1:2] #indicator if dew point is positive or negative
             TdTdTd = group[2:5] #dew point (coded)
-            if sns == "0":
+            if snd == "0":
                 TD = float(TdTdTd) / 10 #decoded dew point
             else:
                 TD = float(TdTdTd) / -10
@@ -377,9 +379,13 @@ while c < length:
                     tpx = "stagnira"
                 if ap == "5" or ap == "6" or ap == "7" or ap == "8":
                     tpx = "pada"
-                apppx = float(appp) / 10
-                decoded.append("Promjena tlaka zraka u zadnjih 3 sata: " + str(apppx) + " hPa") #decoded[14]
-                decoded.append("Tlak zraka " + tpx) #decoded[15]
+                try:
+                    apppx = float(appp) / 10
+                except:
+                    decoded.append("Promjena tlaka zraka u zadnjih 3 sata nije poznata.")
+                else:
+                    decoded.append("Promjena tlaka zraka u zadnjih 3 sata: " + str(apppx) + " hPa") #decoded[14]
+                    decoded.append("Tlak zraka " + tpx) #decoded[15]
         elif d == 10:
             x = group[0:1]
             if x == "6":
@@ -561,7 +567,7 @@ while c < length:
                 txs = group333[1:2]
                 txtx = group333[2:5] 
                 if txtx == "///":
-                    decided333.append("Maksimalna dnevna temperatura zraka nije poznata.")
+                    decoded333.append("Maksimalna dnevna temperatura zraka nije poznata.")
                 else: 
                     if txs == "1":
                         TX = float(txtx) / -10
@@ -572,7 +578,7 @@ while c < length:
                 tns = group333[1:2]
                 tntn = group333[2:5]
                 if tntn == "///":
-                    decided333.append("Minimalna jutarnja temperatura zraka nije poznata.")
+                    decoded333.append("Minimalna jutarnja temperatura zraka nije poznata.")
                 else: 
                     if tns == "1":
                         TN = float(tntn) / -10
