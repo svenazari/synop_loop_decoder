@@ -49,7 +49,7 @@ report.write("Neobrađeni podaci u obliku synop izvještaja su preuzeti sa WEB s
 report.write("\n")
 report.write("Synop izvještaji su obrađeni skriptom Synop Loop Decoder.") 
 report.write("\n")
-report.write("Autor skripte ne odgovara za greške nastale zbog nedostatka podataka ili zbog netočnog unosa poslanih podata sa meteoroloških postaja.")
+report.write("Autor skripte ne odgovara za greške nastale zbog nedostatka podataka ili zbog netočnog unosa poslanih podataka sa meteoroloških postaja.")
 report.write("\n")
 report.write("Skripta i podaci dobiveni korištenjem skrite nisu namjenjeni za službenu upotrebu te autor skripte ne odgovara za štetu nastalu prilikom pokušaja korištenja skripte i/ili obrađenih podataka na takav način.")
 report.write("\n")
